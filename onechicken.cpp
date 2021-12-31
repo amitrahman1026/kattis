@@ -5,7 +5,7 @@ int main(){
     int a, b;
     cin >> a >> b;
     if (a > b){
-        if(b-a == 1){
+        if(a-b == 1){
                 cout << "Dr. Chaz needs 1 more piece of chicken!\n";
             }
         else{
