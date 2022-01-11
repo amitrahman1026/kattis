@@ -4,112 +4,123 @@ using namespace std;
 
 char parser(string input)
 {
+    char parsed;
     if (input == "clank")
     {
-        return 'a';
+        parsed = 'a';
     }
     else if (input == "bong")
     {
-        return 'b';
+        parsed = 'b';
     }
     else if (input == "click")
     {
-        return 'c';
+        parsed = 'c';
     }
     else if (input == "tap")
     {
-        return 'd';
+        parsed = 'd';
     }
     else if (input == "poing")
     {
-        return 'e';
+        parsed = 'e';
     }
     else if (input == "clonk")
     {
-        return 'f';
+        parsed = 'f';
     }
     else if (input == "clack")
     {
-        return 'g';
+        parsed = 'g';
     }
     else if (input == "ping")
     {
-        return 'h';
+        parsed = 'h';
     }
     else if (input == "tip")
     {
-        return 'i';
+        parsed = 'i';
     }
     else if (input == "cloing")
     {
-        return 'j';
+        parsed = 'j';
     }
     else if (input == "tic")
     {
-        return 'k';
+        parsed = 'k';
     }
     else if (input == "cling")
     {
-        return 'l';
+        parsed = 'l';
     }
     else if (input == "bing")
     {
-        return 'm';
+        parsed = 'm';
     }
     else if (input == "pong")
     {
-        return 'n';
+        parsed = 'n';
     }
     else if (input == "clang")
     {
-        return 'o';
+        parsed = 'o';
     }
     else if (input == "pang")
     {
-        return 'p';
+        parsed = 'p';
     }
     else if (input == "clong")
     {
-        return 'q';
+        parsed = 'q';
     }
     else if (input == "tac")
     {
-        return 'r';
+        parsed = 'r';
     }
     else if (input == "boing")
     {
-        return 's';
+        parsed = 's';
     }
     else if (input == "boink")
     {
-        return 't';
+        parsed = 't';
     }
     else if (input == "cloink")
     {
-        return 'u';
+        parsed = 'u';
     }
     else if (input == "rattle")
     {
-        return 'v';
+        parsed = 'v';
     }
     else if (input == "clock")
     {
-        return 'w';
+        parsed = 'w';
     }
     else if (input == "toc")
     {
-        return 'x';
+        parsed = 'x';
     }
     else if (input == "clink")
     {
-        return 'y';
+        parsed = 'y';
     }
     else if (input == "tuc")
     {
-        return 'z';
+        parsed = 'z';
     }
-    else if(input == "whack") {
-        return ' ';
+    return parsed;
+}
+
+void toggle(bool &capital)
+{
+    if (capital == true)
+    {
+        capital = false;
+    }
+    else
+    {
+        capital = true;
     }
 }
 
@@ -118,39 +129,45 @@ int main()
     int n;
     cin >> n;
     string input;
-    
+    bool capital = false;
     string output = "";
     for (int i = 0; i < n; i++)
-    { 
+    {
         cin >> input;
-        if (input == "dink") // holding down shift
+        if (input == "whack")
         {
-            string temp;
-            cin >> temp;
-            // cout << temp;
-            while (temp != "thumb" && i < n)
-            {
-                output.push_back(toupper(parser(temp)));
-                i++;
-            }
+            output.push_back(' ');
+            continue;
         }
-        if (input == "bump") // pressing caps
-        {
-            string temp;
-            cin >> temp;
-            // cout << temp;
-            while (temp != "bumb" && i < n)
-            {
-                output.push_back(toupper(parser(temp)));
-                i++;
-            }
-        }
+
         if (input == "pop") // backspace
         {
+            if (output.length() == 0)
+            {
+                continue;
+            }
             output.pop_back();
-            i++;
+            continue;
         }
-        output.push_back(parser(input));
+
+        if (input == "dink" || input == "thumb" || input == "bump") // toggle using shift or caps
+        {
+            toggle(capital);
+            continue;
+        }
+        // if (input == "bump") // pressing caps
+        // {
+        //     toggle(capital);
+        //     continue;
+        // }
+
+        char parsed = parser(input);
+
+        if (capital == true)
+        {
+            parsed -= (int)('a' - 'A');
+        }
+        output.push_back(parsed);
     }
     cout << output;
 }
