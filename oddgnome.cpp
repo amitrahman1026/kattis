@@ -1,32 +1,25 @@
 #include <iostream>
+#include <vector>
+
 using namespace std;
 
 int main()
 {
     int n;
     cin >> n;
-    int king;
     for (int i = 0; i < n; i++)
     {
-        int m;
+        int m, king_index = 0;
         cin >> m;
-        
-        int king_index = 0;
-        cin >> king;
-
-        int temp;
-        
-        for (int j = 1; j < m; j++)
+        vector<int> a(m);
+        for (int i = 0; i < m; i++){
+            cin >> a[i];
+        }
+        for (int i = 0; i < m-1; i++)
         {
-            cin >> temp;
-            if (temp - king == 1)
+            if (a[i+1] - a[i] != 1)
             {
-                king = temp;
-            }
-            else
-            {
-                king = temp;
-                king_index = j + 1;
+                king_index = i + 2;
                 cout << king_index << endl;
                 break;
             }
