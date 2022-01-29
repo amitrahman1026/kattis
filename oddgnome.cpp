@@ -12,12 +12,13 @@ int main()
         int m, king_index = 0;
         cin >> m;
         vector<int> a(m);
-        for (int i = 0; i < m; i++){
+        for (int i = 0; i < m; i++)
+        {
             cin >> a[i];
         }
-        for (int i = 0; i < m-1; i++)
+        for (int i = 0; i < m - 1; i++)
         {
-            if (a[i+1] - a[i] != 1)
+            if (a[i + 1] - a[i] != 1)
             {
                 king_index = i + 2;
                 cout << king_index << endl;
