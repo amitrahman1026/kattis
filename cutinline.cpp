@@ -1,63 +1,44 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <algorithm>
 using namespace std;
-
-template <class T>
-class ListArray{
-private:
-    int N;
-    T A[1000];
-public:
-    ListArray(): N(0) {}
-    int search(T x){
-        for(int i = 0; i< N; i++){
-            if (A[i] == x){
-                return i;
-            }
-            return -1;
-        }
-    }
-    
-    
-    void leave(T x){
-        int index;
-        for(int i = 0; i< N; i++){
-            if (A[i] == x){
-                index = i;
-            }
-        }
-        for(int j= index; j> N-1;++j){
-            A[j] = A[j+1];
-        }
-        --N;
-    void cut(T x){
-        
-    }
-}
-
-
 
 int main()
 {
-    vector <string> list;
-    int n, index;
-    string action, temp;
+    long n;
+    string name, cmd, a, b;
     cin >> n;
-    for (int i = 0; i < n; i++){
-        cin >> list[i];
+    vector<string> v(n);
+
+    for (long i = 0; i < n; i++)
+    {
+        cin >> name;
+        v.push_back(name);
     }
 
     cin >> n;
-    for (int i = 0; i < n; i++){
-        // read first word;
-        cin >> action;
-        if (action == "leave") {
-            cin >> temp;
-            index = list.
+    
+    for (long i = 0; i < n; i++)
+    {
+        cin >> cmd;
+        if (cmd == "cut")
+        {
+            cin >> a >> b;
+            auto pos =  find(v.begin(), v.end(), b);
+            v.insert(pos, a);
         }
-        else if (action == "cut")
-    }
- 
 
+        if (cmd == "leave")
+        {
+            cin >> a;
+            auto pos =  find(v.begin(), v.end(), a);
+            v.erase(pos);
+        }
+    } 
+    for (long i = 0; i < v.size(); i++)
+    {
+        cout << v[i] << "\n";
+    }
+    return 0;
 }
