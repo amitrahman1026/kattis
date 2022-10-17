@@ -1,5 +1,7 @@
 #include <iostream>
+#include <string>
 #include <vector>
+#include <unordered_map>
 #include <algorithm>
 
 using namespace std;
@@ -7,6 +9,7 @@ using namespace std;
 class UFDS
 {
 private:
+    unordered_map<string> p;
     vector<long> p, rank, setSize;
     long numSets;
 
